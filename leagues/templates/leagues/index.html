@@ -87,7 +87,6 @@
 				<li>{{team.location}} {{team.team_name}}</li>
 			{% endfor %}
 		</ol>
-
 		<!-- OLD -->
 		<h2>-- All Teams --</h2>
 		<ol>
@@ -97,7 +96,35 @@
 				<p>No teams found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
 			{% endfor %}
 		</ol>
+		<!--  **********    PLAYERS    **********  -->
 		<h1>Players</h1>
+		<h2>13) Players last-named "Cooper":</h2>
+		<ol>
+			{% for player in coopers %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>14) Players first-named "Joshua":</h2>
+		<ol>
+			{% for player in joshuas %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>15) Players last-named "Cooper" except those first-named "Joshua":</h2>
+		<ol>
+			{% for player in coopers_no_josh %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>15) Players named "Alexander" or "Wyatt":</h2>
+		<ol>
+			{% for player in alex_or_wyatt %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+
+		<!-- OLD -->
+		<h2>-- All Players --</h2>
 		<ol>
 			{% for player in players %}
 				<li>{{player.first_name}} {{player.last_name}}</li>

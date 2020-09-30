@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import League, Team, Player
+from django.db.models import Q
 
 from . import team_maker
 
@@ -22,6 +23,10 @@ def index(request):
 		"location_order": teams_list.order_by("location"),
 		"rev_name_order": teams_list.order_by("-team_name"),
 		"teams": teams_list,
+		"coopers": player_list.filter(last_name = "Cooper"),
+		"joshuas": player_list.filter(first_name = "Joshua"),
+		"coopers_no_josh": player_list.filter(last_name = "Cooper").exclude(first_name = "Joshua"),
+		"alex_or_wyatt": player_list.filter(Q(first_name = "Alexander") | Q(first_name = "Wyatt")),
 		"players": player_list,
 	}
 	return render(request, "leagues/index.html", context)
