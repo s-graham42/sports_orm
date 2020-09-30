@@ -5,31 +5,33 @@
 	</head>
 	<body>
 		<h1>Leagues:</h1>
-		<h2>1) Baseball Leagues:</h2>
+		<h2>1) Teams in Atlantic Soccer Conference:</h2>
 		<ol>
-			{% for league in baseball_leagues %}
-				<li>{{league.name}}</li>
+			{% for team in asc.teams.all %}
+				<li>{{team.location}} {{team.team_name}}</li>
 			{% endfor %}
 		</ol>
-		<h2>2) Women's Leagues:</h2>
+		<h2>2) Boston Penguins Current Players:</h2>
 		<ol>
-			{% for league in womens_leagues %}
-				<li>{{league.name}}</li>
+			{% for player in bos_penguins.curr_players.all %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
 			{% endfor %}
 		</ol>
-		<h2>3) Hockey Leagues:</h2>
+		<h2>3) Current Players in the International Collegiate Baseball Conference:</h2>
 		<ol>
-			{% for league in hockey_leagues %}
-				<li>{{league.name}}</li>
+			{% for team in icbc.teams.all %}
+				{% for player in team.curr_players.all %}
+					<li>{{player.first_name}} {{player.last_name}}</li>
+				{% endfor %}
 			{% endfor %}
 		</ol>
-		<h2>4) Non-Football Leagues:</h2>
+		<h2>4) Lopezes in American Conference of Amateur Football:</h2>
 		<ol>
 			{% for league in non_football %}
 				<li>{{league.name}}</li>
 			{% endfor %}
 		</ol>
-		<h2>5) Conferences:</h2>
+		<!-- <h2>5) Conferences:</h2>
 		<ol>
 			{% for league in conferences %}
 				<li>{{league.name}}</li>
@@ -40,7 +42,7 @@
 			{% for league in atlantic_leagues %}
 				<li>{{league.name}}</li>
 			{% endfor %}
-		</ol>
+		</ol> -->
 		<h2>-- All Leagues --</h2>
 		<ol>
 			{% for league in leagues %}
@@ -51,7 +53,7 @@
 		</ol>
 		<!--  **********    TEAMS    **********  -->
 		<h1>Teams:</h1>
-		<h2>7) Teams in Dallas</h2>
+		<!-- <h2>7) Teams in Dallas</h2>
 		<ol>
 			{% for team in dallas_teams %}
 				<li>{{team.location}} {{team.team_name}}</li>
@@ -86,7 +88,7 @@
 			{% for team in rev_name_order %}
 				<li>{{team.location}} {{team.team_name}}</li>
 			{% endfor %}
-		</ol>
+		</ol> -->
 		<!-- OLD -->
 		<h2>-- All Teams --</h2>
 		<ol>
@@ -98,7 +100,7 @@
 		</ol>
 		<!--  **********    PLAYERS    **********  -->
 		<h1>Players</h1>
-		<h2>13) Players last-named "Cooper":</h2>
+		<!-- <h2>13) Players last-named "Cooper":</h2>
 		<ol>
 			{% for player in coopers %}
 				<li>{{player.first_name}} {{player.last_name}}</li>
@@ -121,7 +123,7 @@
 			{% for player in alex_or_wyatt %}
 				<li>{{player.first_name}} {{player.last_name}}</li>
 			{% endfor %}
-		</ol>
+		</ol> -->
 
 		<!-- OLD -->
 		<h2>-- All Players --</h2>

@@ -9,26 +9,18 @@ def index(request):
 	teams_list = Team.objects.all()
 	player_list = Player.objects.all()
 	context = {
-		"baseball_leagues": league_list.filter(sport = "Baseball"),
-		"womens_leagues": league_list.filter(name__icontains = "women"),
-		"hockey_leagues": league_list.filter(sport__icontains = "hockey"),
-		"non_football": league_list.exclude(sport = "Football"),
-		"conferences": league_list.filter(name__icontains = "conference"),
-		"atlantic_leagues": league_list.filter(name__icontains = "atlantic"),
+		"asc": League.objects.get(name = "Atlantic Soccer Conference"),
+		"bos_penguins": Team.objects.get(location = 'Boston', team_name = 'Penguins'),
+		"icbc": League.objects.get(name="International Collegiate Baseball Conference"),
+		"lopezes": Player.objects.filter(last_name="Lopez", curr_team.league.name == "American Conference of Amateur Football"),
+
 		"leagues": league_list,
-		"dallas_teams": teams_list.filter(location = "Dallas"),
-		"raptors": teams_list.filter(team_name = "Raptors"),
-		"city_teams": teams_list.filter(location__icontains = "city"),
-		"t_teams": teams_list.filter(team_name__startswith = "T"),
-		"location_order": teams_list.order_by("location"),
-		"rev_name_order": teams_list.order_by("-team_name"),
+		
 		"teams": teams_list,
-		"coopers": player_list.filter(last_name = "Cooper"),
-		"joshuas": player_list.filter(first_name = "Joshua"),
-		"coopers_no_josh": player_list.filter(last_name = "Cooper").exclude(first_name = "Joshua"),
-		"alex_or_wyatt": player_list.filter(Q(first_name = "Alexander") | Q(first_name = "Wyatt")),
+
 		"players": player_list,
 	}
+	print(context['lopezes'])
 	return render(request, "leagues/index.html", context)
 
 def make_data(request):
