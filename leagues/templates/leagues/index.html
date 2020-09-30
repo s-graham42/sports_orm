@@ -4,7 +4,44 @@
 		<title>Sports Leagues</title>
 	</head>
 	<body>
-		<h1>Leagues</h1>
+		<h1>Leagues:</h1>
+		<h2>1) Baseball Leagues:</h2>
+		<ol>
+			{% for league in baseball_leagues %}
+				<li>{{league.name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>2) Women's Leagues:</h2>
+		<ol>
+			{% for league in womens_leagues %}
+				<li>{{league.name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>3) Hockey Leagues:</h2>
+		<ol>
+			{% for league in hockey_leagues %}
+				<li>{{league.name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>4) Non-Football Leagues:</h2>
+		<ol>
+			{% for league in non_football %}
+				<li>{{league.name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>5) Conferences:</h2>
+		<ol>
+			{% for league in conferences %}
+				<li>{{league.name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>6) Atlantic Leagues:</h2>
+		<ol>
+			{% for league in atlantic_leagues %}
+				<li>{{league.name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>-- All Leagues --</h2>
 		<ol>
 			{% for league in leagues %}
 				<li>{{league.name}}</li>
@@ -12,7 +49,47 @@
 				<p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
 			{% endfor %}
 		</ol>
-		<h1>Teams</h1>
+		<!--  **********    TEAMS    **********  -->
+		<h1>Teams:</h1>
+		<h2>7) Teams in Dallas</h2>
+		<ol>
+			{% for team in dallas_teams %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>8) Teams named "Raptors":</h2>
+		<ol>
+			{% for team in raptors %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>9) "City" Teams:</h2>
+		<ol>
+			{% for team in city_teams %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>10) "T" Teams:</h2>
+		<ol>
+			{% for team in t_teams %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>11) Teams Alphabetically By Location:</h2>
+		<ol>
+			{% for team in location_order %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>12) Teams Reverse-Alphabetically By Team Name:</h2>
+		<ol>
+			{% for team in rev_name_order %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+
+		<!-- OLD -->
+		<h2>-- All Teams --</h2>
 		<ol>
 			{% for team in teams %}
 				<li>{{team.location}} {{team.team_name}}</li>

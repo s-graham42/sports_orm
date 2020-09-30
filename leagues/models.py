@@ -5,11 +5,14 @@ class League(models.Model):
 	sport = models.CharField(max_length=15)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
+	# teams = list of Teams associated with a League
 
 class Team(models.Model):
 	location = models.CharField(max_length=50)
 	team_name = models.CharField(max_length=50)
 	league = models.ForeignKey(League, related_name="teams", on_delete = models.CASCADE)
+	# curr_players = list of Players associated with a Team
+	# all_players = list of all Players ever
 
 class Player(models.Model):
 	first_name = models.CharField(max_length=15)
