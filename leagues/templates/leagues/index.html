@@ -27,22 +27,73 @@
 		</ol>
 		<h2>4) Lopezes in American Conference of Amateur Football:</h2>
 		<ol>
-			{% for league in non_football %}
+			{% for team in acaf.teams.all %}
+				{% for player in team.curr_players.all %}
+					{% if player.last_name == "Lopez" %}
+						<li>{{player.first_name}} {{player.last_name}}</li>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		</ol>
+		<h2>5) All Football Players:</h2>
+		<ol>
+			{% for league in football_leagues %}
+				{% for team in league.teams.all %}
+					{% for player in team.curr_players.all %}
+						<li>{{player.first_name}} {{player.last_name}}</li>
+					{% endfor %}
+				{% endfor %}
+			{% endfor %}
+		</ol>
+		<h2>6) Teams with a player named "Sophia":</h2>
+		<ol>
+			{% for team in teams %}
+				{% for player in team.curr_players.all %}
+					{% if player.first_name == "Sophia" %}
+						<li>{{team.location}} {{team.team_name}}: {{player.first_name}} {{player.last_name}}</li>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		</ol>
+		<h2>6.1) Teams with a player named "Sophia":</h2>
+		<h3>(Using select_related)</h3>
+		<ol>
+			{% for team in teams_with_sophia %}
+					<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>7) Leagues with a player named "Sophia":</h2>
+		<ol>
+			{% for league in leagues %}
+				{% for team in league.teams.all %}
+					{% for player in team.curr_players.all %}
+						{% if player.first_name == "Sophia" %}
+							<li>{{league.name}}: {{player.first_name}} {{player.last_name}}</li>
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+			{% endfor %}
+		</ol>
+		<h2>7.1) Leagues with a player named "Sophia":</h2>
+		<ol>
+			{% for league in leagues_with_sophia %}
 				<li>{{league.name}}</li>
 			{% endfor %}
 		</ol>
-		<!-- <h2>5) Conferences:</h2>
+		<h2>8) Floreses not on the Washington Roughriders:</h2>
 		<ol>
-			{% for league in conferences %}
-				<li>{{league.name}}</li>
+			{% for flores in floreses_not_roughriders %}
+				<li>{{flores.first_name}} {{flores.last_name}}: {{flores.curr_team.location}} {{flores.curr_team.team_name}}</li>
 			{% endfor %}
 		</ol>
-		<h2>6) Atlantic Leagues:</h2>
+		<h2>9) All Teams Sam Evans Has Played For:</h2>
 		<ol>
-			{% for league in atlantic_leagues %}
-				<li>{{league.name}}</li>
+			{% for team in sam_evans_teams %}
+				<li>{{team.location}} {{team.team_name}}</li>
 			{% endfor %}
-		</ol> -->
+		</ol>
+
+		<!-- OLD -->
 		<h2>-- All Leagues --</h2>
 		<ol>
 			{% for league in leagues %}
@@ -53,43 +104,6 @@
 		</ol>
 		<!--  **********    TEAMS    **********  -->
 		<h1>Teams:</h1>
-		<!-- <h2>7) Teams in Dallas</h2>
-		<ol>
-			{% for team in dallas_teams %}
-				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ol>
-		<h2>8) Teams named "Raptors":</h2>
-		<ol>
-			{% for team in raptors %}
-				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ol>
-		<h2>9) "City" Teams:</h2>
-		<ol>
-			{% for team in city_teams %}
-				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ol>
-		<h2>10) "T" Teams:</h2>
-		<ol>
-			{% for team in t_teams %}
-				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ol>
-		<h2>11) Teams Alphabetically By Location:</h2>
-		<ol>
-			{% for team in location_order %}
-				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ol>
-		<h2>12) Teams Reverse-Alphabetically By Team Name:</h2>
-		<ol>
-			{% for team in rev_name_order %}
-				<li>{{team.location}} {{team.team_name}}</li>
-			{% endfor %}
-		</ol> -->
-		<!-- OLD -->
 		<h2>-- All Teams --</h2>
 		<ol>
 			{% for team in teams %}
@@ -100,31 +114,6 @@
 		</ol>
 		<!--  **********    PLAYERS    **********  -->
 		<h1>Players</h1>
-		<!-- <h2>13) Players last-named "Cooper":</h2>
-		<ol>
-			{% for player in coopers %}
-				<li>{{player.first_name}} {{player.last_name}}</li>
-			{% endfor %}
-		</ol>
-		<h2>14) Players first-named "Joshua":</h2>
-		<ol>
-			{% for player in joshuas %}
-				<li>{{player.first_name}} {{player.last_name}}</li>
-			{% endfor %}
-		</ol>
-		<h2>15) Players last-named "Cooper" except those first-named "Joshua":</h2>
-		<ol>
-			{% for player in coopers_no_josh %}
-				<li>{{player.first_name}} {{player.last_name}}</li>
-			{% endfor %}
-		</ol>
-		<h2>15) Players named "Alexander" or "Wyatt":</h2>
-		<ol>
-			{% for player in alex_or_wyatt %}
-				<li>{{player.first_name}} {{player.last_name}}</li>
-			{% endfor %}
-		</ol> -->
-
 		<!-- OLD -->
 		<h2>-- All Players --</h2>
 		<ol>

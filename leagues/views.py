@@ -12,15 +12,18 @@ def index(request):
 		"asc": League.objects.get(name = "Atlantic Soccer Conference"),
 		"bos_penguins": Team.objects.get(location = 'Boston', team_name = 'Penguins'),
 		"icbc": League.objects.get(name="International Collegiate Baseball Conference"),
-		"lopezes": Player.objects.filter(last_name="Lopez", curr_team.league.name == "American Conference of Amateur Football"),
+		"acaf": League.objects.get(name = "American Conference of Amateur Football"),
+		"football_leagues": League.objects.filter(sport = "Football"),
+		"teams_with_sophia": Team.objects.filter(curr_players__first_name="Sophia"),
+		"leagues_with_sophia": League.objects.filter(teams__curr_players__first_name="Sophia"),
+		"floreses_not_roughriders": Player.objects.filter(last_name="Flores").exclude(curr_team__location="Washington", curr_team__team_name="Roughriders"),
+		"sam_evans_teams": Team.objects.filter(all_players__first_name="Samuel", all_players__last_name="Evans"),
 
 		"leagues": league_list,
-		
 		"teams": teams_list,
-
 		"players": player_list,
 	}
-	print(context['lopezes'])
+	#print(context['leagues_with_sophia'])
 	return render(request, "leagues/index.html", context)
 
 def make_data(request):
