@@ -92,6 +92,44 @@
 				<li>{{team.location}} {{team.team_name}}</li>
 			{% endfor %}
 		</ol>
+		<h2>10) All-Time Manitoba Tiger-Cats:</h2>
+		<ol>
+			{% for player in all_time_tigerCats %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>11) Past Wichita Vikings:</h2>
+		<ol>
+			{% for player in past_vikings %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>12) Teams Jacob Gray Played for before Current:</h2>
+		<ol>
+			{% for team in jacobs_old_teams %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>13) Joshuas Who have played in Atlantic Federation of Amateur Baseball Players:</h2>
+		<ol>
+			{% for player in joshuas_in_afabp %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% endfor %}
+		</ol>
+		<h2>14) Teams with 12+ Players All-Time:</h2>
+		<ol>
+			{% for team in twelve_player_teams %}
+				<!-- {% if team.num_players >= 12 %} -->
+					<li>{{team.location}} {{team.team_name}} ({{team.num_players}})</li>
+				<!-- {% endif %} -->
+			{% endfor %}
+		</ol>
+		<h2>15) Players By Number of Teams They've Played For:</h2>
+		<ol>
+			{% for player in players_by_num_teams %}
+					<li>{{player.first_name}} {{player.last_name}} ({{player.num_teams}})</li>
+			{% endfor %}
+		</ol>
 
 		<!-- OLD -->
 		<h2>-- All Leagues --</h2>
